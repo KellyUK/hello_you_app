@@ -34,12 +34,23 @@ class _HelloYouState extends State<HelloYou> {
         child: Column(
           children: <Widget>[
             TextField(
+              decoration: InputDecoration(
+                hintText: "Please insert your name"
+              ),
               onChanged: (String string) {
                 setState(() {
                   name = string;
                 });
               },
             ),
+            DropdownButton<String>(
+              items: ['Dollars', 'Pounds', 'Euro'].map((String value){
+                return DropdownMenuItem<String> (
+                  value: value,
+                  child: Text(value)
+                );
+              }).toList(),
+              onChanged: (String value) {},),
              Text('Hello ' + name + "!")
           ],
         ),
